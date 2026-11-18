@@ -10,10 +10,11 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
   (home page plus six topic pages, English and French), deployed by GitHub Actions
   to `gh-pages`.
 - Topic order changed after launch (pushed in `dcab960`).
-- The branch + pull-request rule was added to the agent notes (see change log).
-  That change is local and not yet committed; the repo owner is pushing it.
+- The branch + pull-request rule is in the agent notes (pushed in `2e31f9e`).
 - **From now on all work happens on branches and reaches `main` only through pull
   requests merged on GitHub.** Agents refuse to work on `main` (AGENTS.md, red line).
+- Branch `tooling/protect-main` adds a Claude Code hook that enforces the red line
+  (AGENTS.md, "Enforcement hook"). Not yet committed or merged.
 
 ## Open tasks
 
@@ -23,6 +24,8 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 - [x] Site live.
 
 ### Repo protection
+- [x] Claude Code hook enforcing the red line (`.claude/hooks/protect-main.sh`,
+      branch `tooling/protect-main`). Takes effect once the PR is merged.
 - [ ] Add a GitHub ruleset on `main` so GitHub itself enforces the PR-only rule
       (needs repo admin): **Settings → Rules → Rulesets → New branch ruleset**, target
       `main`, turn on **Require a pull request before merging**, **Require status
@@ -77,6 +80,7 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 | 2026-11-18 | Topic order: Learning R, Data presentation, Working with spatial data, MAP intro course, Modelling species' distributions, Code management; no "Start here" badge | Repo owner, after launch |
 | 2026-11-18 | Red line: no edits, commits, merges or pushes on `main` by agents. All work goes on a branch, and reaches `main` only through a PR merged on GitHub | Repo owner. `main` deploys straight to the live site; PRs add a build check and human review; several operators and agents work here at once |
 | 2026-11-18 | Agents never create a branch on their own. On `main` (or for unrelated work on another branch) they ask the operator whether to create one, may suggest a name, and create it only after a yes | Repo owner: branch creation is the operator's decision |
+| 2026-11-18 | Claude Code `PreToolUse` hook enforces the red line: blocks edits, commits, merges, discards and pushes on `main` and pushes to `main`; branch creation and `gh pr merge` show a permission prompt instead of being blocked | Repo owner asked for enforcement, not just notes. Branch creation is allowed when the operator agrees, so it prompts rather than blocks |
 | 2026-11-18 | Whole site bilingual; English at `/`, French at `/fr/`; toggle on every page links to the same page in the other language | Repo owner |
 | 2026-11-18 | French content taken unchanged from the original `README_fr.md`; only new or changed text is translated, and marked for review | Repo owner |
 | 2026-11-18 | Each MAP tutorial listed once (MAP page) and linked from the spatial page with `see-also` | Removes duplicate entries |
@@ -91,6 +95,16 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 
 ## Change log
 
+- **2026-11-18** (Claude Code agent, branch `tooling/protect-main`) — Added
+  `.claude/settings.json` and `.claude/hooks/protect-main.sh`, a `PreToolUse` hook
+  that enforces the red line (see AGENTS.md, "Enforcement hook", for what it blocks,
+  what it prompts for, and its limits). Documented it in AGENTS.md (new section and
+  layout entries). Tested it with 72 sample tool calls, all passing: against a
+  scratch clone on `main` (blocks and prompts), against this branch (allowed,
+  except pushes to `main`), with a worktree, and with repos other than this one
+  (left alone by design). Settings run it with `bash`, so it works without the
+  executable bit. Corrected the status above: the red-line notes were pushed in
+  `2e31f9e`.
 - **2026-11-18** (Claude Code agent) — Tightened the red line at the owner's
   request: agents must ask before creating any branch, may suggest a name, and
   create it only after the operator says yes. With no yes, they make no edits.

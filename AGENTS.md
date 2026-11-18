@@ -129,6 +129,46 @@ git branch -d content/add-qgis-tutorials
 The merge into `main` triggers the deploy, and the live site updates a few minutes
 later.
 
+### Enforcement hook (Claude Code)
+
+For Claude Code, `.claude/settings.json` runs `.claude/hooks/protect-main.sh` before
+every file edit and shell command. It enforces the red line whether or not the agent
+has read these notes:
+
+- **Blocks** (Claude Code can't do these at all): editing or writing files in this
+  repo while it is on `main`; `git commit`, `merge`, `rebase`, `cherry-pick`,
+  `revert` or `am` on `main`; discarding uncommitted work on `main` (`reset --hard`,
+  `restore`, `clean`, `checkout --`, `stash drop`); any `git push` while on
+  `main`; any push to `main` (`origin main`, `HEAD:main`, `--all`, `--mirror`) from
+  any branch.
+- **Asks the operator** (Claude Code shows a permission prompt): creating, copying
+  or renaming a branch (`git switch -c`, `git checkout -b`, `git branch <name>`,
+  `git worktree add -b`, `usethis::pr_init()`) and merging a PR (`gh pr merge`).
+  Approve only if you agreed to that branch name or asked for that merge.
+
+Limits:
+
+- It reads command text, so it doesn't catch commands that write files without
+  git (`sed -i`, `> file`, R or Python scripts). It can also refuse a harmless
+  command that only *mentions* a push to `main`, for example a commit message or PR
+  body that describes this hook. Put such text in a file and use
+  `git commit -F <file>` or `gh pr create --body-file <file>`.
+- It needs `bash`, `git` and `jq`. Without `jq` it does nothing. On Windows it
+  needs Git Bash.
+- It only affects Claude Code. Other agents and people rely on these notes and the
+  GitHub ruleset below.
+- It is project config, so it takes effect on `main` once it is merged. Claude
+  Code usually picks up changes to it straight away, and always at session start.
+
+To check it after changing it, pipe a sample tool call in from the project root:
+
+```sh
+echo '{"tool_name":"Bash","tool_input":{"command":"git commit -m x"},"cwd":"'"$PWD"'"}' \
+  | CLAUDE_PROJECT_DIR="$PWD" bash .claude/hooks/protect-main.sh
+```
+
+On `main` this prints a `"deny"` decision. On a feature branch it prints nothing.
+
 ### Server-side protection
 
 The rules above rely on agents following them. To make GitHub itself refuse direct
@@ -197,6 +237,8 @@ assets/images/vector-atlas-logo.png   Logo (also cropped for the favicon)
 static/.nojekyll                      Stops GitHub Pages running Jekyll
 .github/workflows/site.yaml           Build + deploy
 .claude/launch.json                   Local preview server for Claude Code desktop
+.claude/settings.json                 Claude Code project settings: runs the hook below
+.claude/hooks/protect-main.sh         Enforces the "never work on main" red line
 ```
 
 Current topics (in order, by `weight`): `learning-r` (10), `data-presentation` (20),
