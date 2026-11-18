@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travailler avec des données spatiales · Ressources de formation du Vector Atlas</title>
+<meta name="description" content="Travailler avec des données spatiales raster et vectorielles dans R (avec terra et sf) et dans QGIS.">
+
+<link rel="alternate" hreflang="en" href="https://vector-atlas.github.io/vector_atlas_training_hub/topics/spatial-data/">
+<link rel="alternate" hreflang="fr" href="https://vector-atlas.github.io/vector_atlas_training_hub/fr/topics/spatial-data/">
+<link rel="icon" type="image/png" href="/vector_atlas_training_hub/images/vector-atlas-logo_hu_2a1d374b54e4ccfe.png">
+<link rel="stylesheet" href="/vector_atlas_training_hub/css/main.min.4ff77423e9571d4f20465db66cd270ffe2e15df6818f07b012b6d4926b44605a.css" integrity="sha256-T/d0I&#43;lXHU8gRl22bNJw/&#43;LhXfaBjwewErbUkmtEYFo=">
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/vector_atlas_training_hub/fr/">
+        <img src="/vector_atlas_training_hub/images/vector-atlas-logo_hu_b071b93b34a012c8.png" width="240" height="58" alt="Vector Atlas">
+      <span class="brand-title">Ressources de formation du Vector Atlas</span>
+    </a>
+    
+<a class="lang-switch" href="/vector_atlas_training_hub/topics/spatial-data/" hreflang="en" lang="en">English</a>
+
+  </div>
+</header>
+
+  <main id="main" class="container">
+    
+<nav class="breadcrumb"><a href="/vector_atlas_training_hub/fr/">← Tous les thèmes</a></nav>
+
+<article class="topic">
+  <header class="topic-header">
+    <h1>Travailler avec des données spatiales</h1>
+    <p class="lede">Travailler avec des données spatiales raster et vectorielles dans R (avec terra et sf) et dans QGIS.</p>
+  </header>
+  <div class="prose">
+    <h2 id="données-spatiales-dans-r">Données spatiales dans R</h2>
+
+<a class="see-also" href="/vector_atlas_training_hub/fr/topics/map-intro-course/#map-spatial-r">
+  <span class="see-also-main">
+    <span class="see-also-title">Données spatiales dans R (MAP)</span>
+    <span class="see-also-meta">Fait partie de <em>Introduction à l&#39;analyse spatiale pour les maladies infectieuses</em> →</span>
+  </span>
+  <span class="badges"><span class="badge level-beginner">Débutant</span><span class="badge lang-en">🇬🇧 En anglais</span>
+  </span>
+</a>
+
+
+
+<section class="resource" id="les-données-raster-avec-terra">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://rgeocarto.github.io/09_package_terra.html">Les données raster avec <code>terra</code></a></h3>
+    <div class="badges"><span class="badge level-intermediate">Intermédiaire</span>
+    </div>
+  </div>
+  <p class="resource-authors">Timothée Giraud et Hugues Pecout (CNRS)</p>
+  <p class="resource-url"><a href="https://rgeocarto.github.io/09_package_terra.html" tabindex="-1" aria-hidden="true">rgeocarto.github.io/09_package_terra.html</a></p>
+  <div class="resource-body">
+    <p>Le package <code>terra</code> est l&rsquo;outil moderne le plus puissant pour travailler avec des données raster dans R (il remplace le package <code>raster</code>, désormais obsolète), et peut aussi être utilisé avec des données vectorielles*. Cette partie du manuel présente pas à pas le travail avec des données spatiales à l&rsquo;aide de <code>terra</code> : import et export, affichage, découpage de la zone d&rsquo;étude, algèbre spatiale et conversions. Pour une introduction plus large aux données spatiales dans R, ce chapitre s&rsquo;inscrit dans le manuel complet <a href="https://rgeocarto.github.io/"><em>Géomatique et cartographie avec R</em></a>, qui couvre aussi les données vectorielles, la cartographie thématique et l&rsquo;acquisition de données, et sera utile aux débutants en science des données spatiales. Un projet RStudio contenant toutes les données des exercices est téléchargeable depuis la page d&rsquo;accueil.</p>
+<p><em>Lorsque nous écrivons vectoriel(le)s* avec un astérisque, il s&rsquo;agit des données vectorielles au sens <a href="https://docs.qgis.org/latest/fr/docs/gentle_gis_introduction/vector_data.html">d&rsquo;une forme de données spatiales : points, lignes, polygones</a>, et non des vecteurs au sens de vecteurs de maladies, comme les moustiques.</em></p>
+
+  </div>
+</section>
+
+
+
+<section class="resource" id="les-données-vectorielles-avec-sf">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://rgeocarto.github.io/01_package_sf.html">Les données vectorielles avec <code>sf</code></a></h3>
+    <div class="badges"><span class="badge level-intermediate">Intermédiaire</span>
+    </div>
+  </div>
+  <p class="resource-authors">Timothée Giraud et Hugues Pecout (CNRS)</p>
+  <p class="resource-url"><a href="https://rgeocarto.github.io/01_package_sf.html" tabindex="-1" aria-hidden="true">rgeocarto.github.io/01_package_sf.html</a></p>
+  <div class="resource-body">
+    <p>Le package <code>sf</code> (<em>Simple Features</em>) est un autre outil moderne et puissant pour travailler avec des données vectorielles* dans R. Ce chapitre explique ce que sont les <em>simple features</em> et les principes de fonctionnement du package, puis <a href="https://rgeocarto.github.io/">renvoie vers une série de chapitres de plus en plus détaillés</a> sur l&rsquo;utilisation de <code>sf</code> : import et export, systèmes de coordonnées, sélections et jointures attributaires et spatiales, opérations sur les géométries et mesures. Pour les détails techniques des fonctions, le <a href="https://r-spatial.github.io/sf/reference/index.html">manuel de référence du package</a> (en anglais) reste la référence.</p>
+
+  </div>
+</section>
+
+<h2 id="données-spatiales-dans-qgis">Données spatiales dans QGIS</h2>
+
+<a class="see-also" href="/vector_atlas_training_hub/fr/topics/map-intro-course/#map-qgis">
+  <span class="see-also-main">
+    <span class="see-also-title">Données spatiales dans QGIS (MAP)</span>
+    <span class="see-also-meta">Fait partie de <em>Introduction à l&#39;analyse spatiale pour les maladies infectieuses</em> →</span>
+  </span>
+  <span class="badges"><span class="badge level-beginner">Débutant</span><span class="badge lang-en">🇬🇧 En anglais</span>
+  </span>
+</a>
+
+
+
+<section class="resource" id="données-spatiales-dans-qgis-qgis">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://docs.qgis.org/latest/fr/docs/user_manual/introduction/getting_started.html">Données spatiales dans QGIS (QGIS)</a></h3>
+    <div class="badges"><span class="badge level-beginner">Débutant</span>
+    </div>
+  </div>
+  <p class="resource-url"><a href="https://docs.qgis.org/latest/fr/docs/user_manual/introduction/getting_started.html" tabindex="-1" aria-hidden="true">docs.qgis.org/latest/fr/docs/user_manual/introduction/getting_started.html</a></p>
+  <div class="resource-body">
+    <p>QGIS est un système d&rsquo;information géographique (SIG) gratuit, libre et bien maintenu, qui permet de manipuler et d&rsquo;analyser des données spatiales vectorielles* et raster. Ce chapitre <em>Premiers pas</em> guide l&rsquo;utilisateur dans l&rsquo;installation et le premier chargement de données. Il constitue le chapitre 5 du <a href="https://docs.qgis.org/latest/fr/docs/user_manual/index.html">manuel de l&rsquo;utilisateur de QGIS</a>, entièrement traduit en français. Pour s&rsquo;initier aux notions de base des SIG, la documentation propose aussi <a href="https://docs.qgis.org/latest/fr/docs/gentle_gis_introduction/index.html"><em>Une rapide introduction aux SIG</em></a>.</p>
+<p>Nous recommandons généralement d&rsquo;analyser les données spatiales dans R, car les analyses sont alors facilement reproductibles et modifiables ; cela suppose toutefois d&rsquo;avoir développé les compétences nécessaires pour utiliser R efficacement, ce qui n&rsquo;est pas toujours réaliste pour tous. QGIS est un excellent outil pour cartographier et explorer rapidement des données spatiales, et répondra à de nombreux besoins.</p>
+
+  </div>
+</section>
+
+
+  </div>
+</article>
+<nav class="pager">
+  <a class="pager-link prev" href="/vector_atlas_training_hub/fr/topics/data-presentation/"><span class="pager-label">← Thème précédent</span><span class="pager-title">Présentation des données</span></a>
+  <a class="pager-link next" href="/vector_atlas_training_hub/fr/topics/species-distribution-modelling/"><span class="pager-label">Thème suivant →</span><span class="pager-title">Modéliser la distribution des espèces</span></a>
+</nav>
+
+  </main>
+  
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-text">
+      <h2 class="footer-heading" id="questions">Des questions ?</h2>
+      <p>Ce site est maintenu par Gerry Ryan pour le compte du <strong>Vector Atlas</strong>.</p>
+      <p>Si vous constatez un problème sur le site ou un lien mort, merci de <a href="https://github.com/vector-atlas/vector_atlas_training_hub/issues">signaler un problème (<em>issue</em>)</a>.</p>
+      <p>Vous connaissez une ressource francophone qui pourrait remplacer l&rsquo;une des ressources signalées 🇬🇧, ou vous avez d&rsquo;autres questions ? Contactez-nous à l&rsquo;adresse <a href="mailto:vectoratlas@icipe.org">vectoratlas@icipe.org</a>.</p>
+    </div>
+    <a class="footer-logo" href="https://vectoratlas.icipe.org">
+        <img src="/vector_atlas_training_hub/images/vector-atlas-logo_hu_7273ccfbacd7658f.png" width="200" height="49" alt="Vector Atlas">
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestion du code · Ressources de formation du Vector Atlas</title>
+<meta name="description" content="Garder la trace de votre code grâce au contrôle de version, avec Git et GitHub, depuis RStudio ou en ligne de commande.">
+
+<link rel="alternate" hreflang="en" href="https://vector-atlas.github.io/vector_atlas_training_hub/topics/code-management/">
+<link rel="alternate" hreflang="fr" href="https://vector-atlas.github.io/vector_atlas_training_hub/fr/topics/code-management/">
+<link rel="icon" type="image/png" href="/vector_atlas_training_hub/images/vector-atlas-logo_hu_2a1d374b54e4ccfe.png">
+<link rel="stylesheet" href="/vector_atlas_training_hub/css/main.min.4ff77423e9571d4f20465db66cd270ffe2e15df6818f07b012b6d4926b44605a.css" integrity="sha256-T/d0I&#43;lXHU8gRl22bNJw/&#43;LhXfaBjwewErbUkmtEYFo=">
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/vector_atlas_training_hub/fr/">
+        <img src="/vector_atlas_training_hub/images/vector-atlas-logo_hu_b071b93b34a012c8.png" width="240" height="58" alt="Vector Atlas">
+      <span class="brand-title">Ressources de formation du Vector Atlas</span>
+    </a>
+    
+<a class="lang-switch" href="/vector_atlas_training_hub/topics/code-management/" hreflang="en" lang="en">English</a>
+
+  </div>
+</header>
+
+  <main id="main" class="container">
+    
+<nav class="breadcrumb"><a href="/vector_atlas_training_hub/fr/">← Tous les thèmes</a></nav>
+
+<article class="topic">
+  <header class="topic-header">
+    <h1>Gestion du code</h1>
+    <p class="lede">Garder la trace de votre code grâce au contrôle de version, avec Git et GitHub, depuis RStudio ou en ligne de commande.</p>
+  </header>
+  <div class="prose">
+    <p>Vous avez écrit du code ; il s&rsquo;agit maintenant de le gérer de façon à ne pas vous laisser déborder.</p>
+<p>Vous enregistrez votre fichier <code>script.R</code>. Puis vous faites quelques modifications, mais vous souhaitez garder l&rsquo;ancienne version au cas où : vous voilà avec <code>script2.R</code>. Vous faites d&rsquo;autres modifications, essayez d&rsquo;autres choses, et vous finissez avec 27 scripts, jusqu&rsquo;à <code>copie_script9_alternatif_avec_autres_graphiques2.R</code>.</p>
+<p>À la place, vous pouvez gérer ce processus en conservant un historique commenté des modifications et en <em>contrôlant</em> la <em>version</em> que vous utilisez. C&rsquo;est ce qu&rsquo;on appelle le contrôle de version (ou gestion de versions).</p>
+<p>La méthode actuelle la plus courante consiste à utiliser le logiciel <a href="https://git-scm.com">Git</a> pour suivre les modifications et pouvoir revenir en arrière si nécessaire.</p>
+<p>Git est généralement associé à un service en ligne comme <a href="https://github.com">GitHub</a>, <a href="https://about.gitlab.com">GitLab</a> ou <a href="https://bitbucket.org">Bitbucket</a>, qui permet de sauvegarder le code à distance pour plus de sécurité et facilite la collaboration sur les projets.</p>
+<h2 id="contrôle-de-version-avec-git-dans-rstudio">Contrôle de version avec Git dans RStudio</h2>
+
+
+<section class="resource" id="utiliser-git-avec-rstudio-utilitr">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html">Utiliser Git avec RStudio (utilitR)</a></h3>
+    <div class="badges"><span class="badge level-beginner">Débutant</span>
+    </div>
+  </div>
+  <p class="resource-authors">Projet utilitR (Insee)</p>
+  <p class="resource-url"><a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html" tabindex="-1" aria-hidden="true">book.utilitr.org/03_Fiches_thematiques/Fiche_git_utilisation.html</a></p>
+  <div class="resource-body">
+    <p>Un excellent point de départ pour le contrôle de version lorsqu&rsquo;on utilise R dans RStudio avec GitHub ou GitLab : cette fiche vous permettra d&rsquo;être opérationnel rapidement. Elle couvre la création d&rsquo;un projet RStudio relié à un dépôt distant, le suivi des modifications (<em>commit</em>), les échanges avec le dépôt distant (<em>pull</em>, <em>push</em>) et l&rsquo;utilisation des branches, principalement via l&rsquo;interface graphique de RStudio. Commencez par la fiche compagnon <a href="https://book.utilitr.org/03_Fiches_thematiques/Fiche_configurer_git.html">Configurer Git sur son poste</a>. La plupart des principes et des procédures s&rsquo;appliquent quelle que soit la plateforme en ligne utilisée (GitHub, GitLab ou Bitbucket).</p>
+
+  </div>
+</section>
+
+<h2 id="contrôle-de-version-avec-git--toutes-plateformes">Contrôle de version avec Git — toutes plateformes</h2>
+
+
+<section class="resource" id="pro-git">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://git-scm.com/book/fr/v2">Pro Git</a></h3>
+    <div class="badges"><span class="badge level-intermediate">Intermédiaire</span>
+    </div>
+  </div>
+  <p class="resource-authors">Scott Chacon et Ben Straub</p>
+  <p class="resource-url"><a href="https://git-scm.com/book/fr/v2" tabindex="-1" aria-hidden="true">git-scm.com/book/fr/v2</a></p>
+  <div class="resource-body">
+    <p>Un guide général et complet de l&rsquo;utilisation de Git, intégralement traduit en français et disponible gratuitement. Il présente les différentes étapes de la gestion du code avec Git, principalement en ligne de commande, à l&rsquo;aide des commandes <code>git</code> elles-mêmes. Nous vous conseillons de commencer par les chapitres 1 (<em>Démarrage rapide</em>) et 2 (<em>Les bases de Git</em>), puis le chapitre 6 consacré à GitHub.</p>
+
+  </div>
+</section>
+
+
+  </div>
+</article>
+<nav class="pager">
+  <a class="pager-link prev" href="/vector_atlas_training_hub/fr/topics/species-distribution-modelling/"><span class="pager-label">← Thème précédent</span><span class="pager-title">Modéliser la distribution des espèces</span></a>
+</nav>
+
+  </main>
+  
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-text">
+      <h2 class="footer-heading" id="questions">Des questions ?</h2>
+      <p>Ce site est maintenu par Gerry Ryan pour le compte du <strong>Vector Atlas</strong>.</p>
+      <p>Si vous constatez un problème sur le site ou un lien mort, merci de <a href="https://github.com/vector-atlas/vector_atlas_training_hub/issues">signaler un problème (<em>issue</em>)</a>.</p>
+      <p>Vous connaissez une ressource francophone qui pourrait remplacer l&rsquo;une des ressources signalées 🇬🇧, ou vous avez d&rsquo;autres questions ? Contactez-nous à l&rsquo;adresse <a href="mailto:vectoratlas@icipe.org">vectoratlas@icipe.org</a>.</p>
+    </div>
+    <a class="footer-logo" href="https://vectoratlas.icipe.org">
+        <img src="/vector_atlas_training_hub/images/vector-atlas-logo_hu_7273ccfbacd7658f.png" width="200" height="49" alt="Vector Atlas">
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>

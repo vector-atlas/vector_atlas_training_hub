@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modelling species&#39; distributions · Vector Atlas Training Hub</title>
+<meta name="description" content="Good habits for species distribution modelling, models for disease vectors, and boosted regression trees.">
+
+<link rel="alternate" hreflang="en" href="https://vector-atlas.github.io/vector_atlas_training_hub/topics/species-distribution-modelling/">
+<link rel="alternate" hreflang="fr" href="https://vector-atlas.github.io/vector_atlas_training_hub/fr/topics/species-distribution-modelling/">
+<link rel="icon" type="image/png" href="/vector_atlas_training_hub/images/vector-atlas-logo_hu_2a1d374b54e4ccfe.png">
+<link rel="stylesheet" href="/vector_atlas_training_hub/css/main.min.4ff77423e9571d4f20465db66cd270ffe2e15df6818f07b012b6d4926b44605a.css" integrity="sha256-T/d0I&#43;lXHU8gRl22bNJw/&#43;LhXfaBjwewErbUkmtEYFo=">
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/vector_atlas_training_hub/">
+        <img src="/vector_atlas_training_hub/images/vector-atlas-logo_hu_b071b93b34a012c8.png" width="240" height="58" alt="Vector Atlas">
+      <span class="brand-title">Vector Atlas Training Hub</span>
+    </a>
+    
+<a class="lang-switch" href="/vector_atlas_training_hub/fr/topics/species-distribution-modelling/" hreflang="fr" lang="fr">Français</a>
+
+  </div>
+</header>
+
+  <main id="main" class="container">
+    
+<nav class="breadcrumb"><a href="/vector_atlas_training_hub/">← All topics</a></nav>
+
+<article class="topic">
+  <header class="topic-header">
+    <h1>Modelling species&#39; distributions</h1>
+    <p class="lede">Good habits for species distribution modelling, models for disease vectors, and boosted regression trees.</p>
+  </header>
+  <div class="prose">
+    
+
+<section class="resource" id="species-distribution-modelling">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://rspatial.org/sdm/index.html">Species Distribution Modelling</a></h3>
+    <div class="badges"><span class="badge level-intermediate">Intermediate</span>
+    </div>
+  </div>
+  <p class="resource-authors">Robert Hijmans and Jane Elith</p>
+  <p class="resource-url"><a href="https://rspatial.org/sdm/index.html" tabindex="-1" aria-hidden="true">rspatial.org/sdm/index.html</a></p>
+  <div class="resource-body">
+    <p>A step-by-step guide to learn many good habits for species distribution modelling and how to practically do so in R, written by leading lights in the field. This guide takes you through all steps from the basic concepts, to data collection and preparation, to model fitting, evaluation and prediction.</p>
+<p>The modelling method used in this guide is a relatively simple Generalised Linear Model, however the workflow that the guide teaches is vital to master before using other methods.</p>
+
+  </div>
+</section>
+
+
+
+<section class="resource" id="species-distribution-modelling-for-vectors-course">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://github.com/idem-lab/vector_sdm_course">Species Distribution Modelling for Vectors Course</a></h3>
+    <div class="badges"><span class="badge level-advanced">Advanced</span>
+    </div>
+  </div>
+  <p class="resource-authors">Nick Golding and Gerry Ryan</p>
+  <p class="resource-url"><a href="https://github.com/idem-lab/vector_sdm_course" tabindex="-1" aria-hidden="true">github.com/idem-lab/vector_sdm_course</a></p>
+  <div class="resource-body">
+    <p><em>Yes — here we mean disease vectors, not spatial ones</em>. This course is intended to be taught in person, and is focussed on developing understanding of key concepts around data biases and how they apply in particular to modelling the distribution of vectors. The course covers a range of modelling methods such as GLMs, MaxEnt, and Multispecies Poisson Point-Process models.</p>
+<p>Although users may follow the course materials using the <a href="https://github.com/idem-lab/vector_sdm_course/blob/master/course_structure.md">broad course outline</a> at present, we intend to update materials to make it easier to follow-through independently as well.</p>
+
+  </div>
+</section>
+
+
+
+<section class="resource" id="boosted-regression-trees">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="https://rspatial.org/raster/sdm/9_sdm_brt.html">Boosted Regression Trees</a></h3>
+    <div class="badges"><span class="badge level-advanced">Advanced</span>
+    </div>
+  </div>
+  <p class="resource-authors">Jane Elith and John Leathwick</p>
+  <p class="resource-url"><a href="https://rspatial.org/raster/sdm/9_sdm_brt.html" tabindex="-1" aria-hidden="true">rspatial.org/raster/sdm/9_sdm_brt.html</a></p>
+  <div class="resource-body">
+    <p>Boosted Regression Trees (BRTs) are a powerful method for fitting non-linear interacting relationships, including for modelling species&rsquo; distributions. This is a guide to fitting BRTs using the <code>dismo</code> package in R. This guide is a companion to the very accessible journal article <a href="https://doi.org/10.1111/j.1365-2656.2008.01390.x">A Working Guide to Boosted Regression Trees</a>, and jives well with the code from the Hijmans and Elith guide listed above. NB: the code in the final section, <a href="https://rspatial.org/raster/sdm/9_sdm_brt.html#spatial-prediction">Spatial Prediction</a>, is based on the deprecated <code>raster</code> package. It should work largely as-is by replacing <code>raster</code> with <code>terra</code> in the code.</p>
+
+  </div>
+</section>
+
+
+  </div>
+</article>
+<nav class="pager">
+  <a class="pager-link prev" href="/vector_atlas_training_hub/topics/spatial-data/"><span class="pager-label">← Previous topic</span><span class="pager-title">Working with spatial data</span></a>
+  <a class="pager-link next" href="/vector_atlas_training_hub/topics/code-management/"><span class="pager-label">Next topic →</span><span class="pager-title">Code management</span></a>
+</nav>
+
+  </main>
+  
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-text">
+      <h2 class="footer-heading" id="questions">Questions?</h2>
+      <p>This site is maintained by Gerry Ryan on behalf of the <strong>Vector Atlas</strong>.</p>
+      <p>If there are problems with the site or links are dead, please <a href="https://github.com/vector-atlas/vector_atlas_training_hub/issues">post an issue</a>.</p>
+      <p>Other questions? Please contact us at <a href="mailto:vectoratlas@icipe.org">vectoratlas@icipe.org</a>.</p>
+    </div>
+    <a class="footer-logo" href="https://vectoratlas.icipe.org">
+        <img src="/vector_atlas_training_hub/images/vector-atlas-logo_hu_7273ccfbacd7658f.png" width="200" height="49" alt="Vector Atlas">
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
