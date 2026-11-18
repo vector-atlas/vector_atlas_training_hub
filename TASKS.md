@@ -6,19 +6,18 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 
 ## Current status (2026-11-18)
 
-- Site scaffolded with blogdown + Hugo 0.170.1: home page plus six topic pages, in
-  English and French. Builds locally with no warnings.
-- GitHub Actions workflow written (`.github/workflows/site.yaml`) but **not yet run**.
-- **Nothing committed or pushed yet.**
+- Site is **live** at <https://vector-atlas.github.io/vector_atlas_training_hub/>
+  (home page plus six topic pages, English and French), deployed by GitHub Actions
+  to `gh-pages`.
+- Topic order changed after launch (see change log); that change is local and not
+  yet committed.
 
 ## Open tasks
 
 ### Launch
-- [ ] Review the site locally, then commit and push to `main` (repo owner).
-- [ ] After the first workflow run on `main` creates the `gh-pages` branch, set
-      **Settings → Pages → Deploy from a branch → `gh-pages` / (root)** (needs repo admin).
-- [ ] Check the live site at <https://vector-atlas.github.io/vector_atlas_training_hub/>
-      in both languages.
+- [x] Commit and push to `main` (repo owner).
+- [x] Set **Settings → Pages → Deploy from a branch → `gh-pages` / (root)**.
+- [x] Site live.
 
 ### Review
 - [ ] **Level badges** — first-pass levels set by an agent; confirm or change them in the topic files.
@@ -65,6 +64,7 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 | Date | Decision | Why |
 |------|----------|-----|
 | 2026-11-18 | Six topics: MAP intro course; Learning R; Data presentation; Working with spatial data; Modelling species' distributions; Code management | Agreed with repo owner; avoids one long list |
+| 2026-11-18 | Topic order: Learning R, Data presentation, Working with spatial data, MAP intro course, Modelling species' distributions, Code management; no "Start here" badge | Repo owner, after launch |
 | 2026-11-18 | Whole site bilingual; English at `/`, French at `/fr/`; toggle on every page links to the same page in the other language | Repo owner |
 | 2026-11-18 | French content taken unchanged from the original `README_fr.md`; only new or changed text is translated, and marked for review | Repo owner |
 | 2026-11-18 | Each MAP tutorial listed once (MAP page) and linked from the spatial page with `see-also` | Removes duplicate entries |
@@ -79,6 +79,10 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 
 ## Change log
 
+- **2026-11-18** (Claude Code agent) — Reordered topics (weights in both languages):
+  Learning R 10, Data presentation 20, Working with spatial data 30, MAP intro course
+  40, SDM 50, Code management 60. Removed `badge: start_here` from the MAP course.
+  Clean build; previous/next links follow the new order.
 - **2026-11-18** (Claude Code agent) — Initial site: config, templates, styles,
   shortcodes, EN/FR content for home + six topics, i18n strings, CI workflow,
   AGENTS.md, TASKS.md. Content migrated from the original README.md / README_fr.md

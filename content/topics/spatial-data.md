@@ -1,7 +1,7 @@
 ---
 title: Working with spatial data
 description: Working with raster and vector spatial data in R (with terra and sf) and in QGIS.
-weight: 40
+weight: 30
 ---
 
 ## Spatial data in R

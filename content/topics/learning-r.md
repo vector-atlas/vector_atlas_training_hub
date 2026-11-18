@@ -1,7 +1,7 @@
 ---
 title: Learning R
 description: From your first steps in R and RStudio, through to programming, advanced R and writing your own packages.
-weight: 20
+weight: 10
 ---
 
 We recommend R as a tool for the analysis of data. It is free, widely used, has many learning and support resources available, and can be very powerful. R is a programming-language based tool that does require a degree of up-front investment of time in learning to produce results and comfortably use the tool. For people who regularly want to manipulate or analyse data, and produce graphics, we suggest that this may be a worthwhile investment. We also produce R-based resources through our work in the Vector Atlas that can be easily reused and repurposed toward collaborators' specific needs.

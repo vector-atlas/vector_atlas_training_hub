@@ -1,7 +1,7 @@
 ---
 title: Travailler avec des données spatiales
 description: Travailler avec des données spatiales raster et vectorielles dans R (avec terra et sf) et dans QGIS.   # NEW
-weight: 40
+weight: 30
 ---
 
 ## Données spatiales dans R

@@ -69,8 +69,9 @@ static/.nojekyll                      Stops GitHub Pages running Jekyll
 .claude/launch.json                   Local preview server for Claude Code desktop
 ```
 
-Current topics (in order): `map-intro-course`, `learning-r`, `data-presentation`,
-`spatial-data`, `species-distribution-modelling`, `code-management`.
+Current topics (in order, by `weight`): `learning-r` (10), `data-presentation` (20),
+`spatial-data` (30), `map-intro-course` (40), `species-distribution-modelling` (50),
+`code-management` (60). Keep weights identical in the `.md` and `.fr.md` files.
 
 ## Adding a resource
 

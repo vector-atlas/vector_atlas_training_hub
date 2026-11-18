@@ -1,7 +1,7 @@
 ---
 title: Data presentation
 description: Making clear, effective graphics in R, from first plots to publication-quality figures with ggplot2.
-weight: 30
+weight: 20
 ---
 
 {{< resource title="Data Visualization: A Practical Introduction" url="https://socviz.co/" authors="Kieran Healy" level="intermediate" >}}

@@ -1,8 +1,7 @@
 ---
 title: Introduction to Spatial Analysis for Infectious Diseases
 description: An introductory course from the Malaria Atlas Project covering data management, R, QGIS and spatial data — a good place to start.
-weight: 10
-badge: start_here
+weight: 40
 ---
 
 *Malaria Atlas Project* — <http://malariaatlas.org/training>

@@ -1,7 +1,7 @@
 ---
 title: Apprendre R   # NEW
 description: Des premiers pas avec R et RStudio jusqu'à la programmation, R avancé et la création de vos propres packages.   # NEW
-weight: 20
+weight: 10
 ---
 
 Nous recommandons R pour l'analyse des données. Il est gratuit, très répandu, dispose de nombreuses ressources d'apprentissage et d'assistance, et peut être très puissant. R est un outil fondé sur un langage de programmation : obtenir des résultats et l'utiliser avec aisance demande donc un certain investissement initial en temps d'apprentissage. Pour les personnes qui manipulent ou analysent régulièrement des données et produisent des graphiques, nous pensons que cet investissement en vaut la peine. Dans le cadre du Vector Atlas, nous produisons également des ressources en R qui peuvent facilement être réutilisées et adaptées aux besoins spécifiques de nos collaborateurs et collaboratrices.
