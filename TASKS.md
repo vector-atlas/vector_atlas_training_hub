@@ -9,8 +9,11 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 - Site is **live** at <https://vector-atlas.github.io/vector_atlas_training_hub/>
   (home page plus six topic pages, English and French), deployed by GitHub Actions
   to `gh-pages`.
-- Topic order changed after launch (see change log); that change is local and not
-  yet committed.
+- Topic order changed after launch (pushed in `dcab960`).
+- The branch + pull-request rule was added to the agent notes (see change log).
+  That change is local and not yet committed; the repo owner is pushing it.
+- **From now on all work happens on branches and reaches `main` only through pull
+  requests merged on GitHub.** Agents refuse to work on `main` (AGENTS.md, red line).
 
 ## Open tasks
 
@@ -18,6 +21,13 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 - [x] Commit and push to `main` (repo owner).
 - [x] Set **Settings → Pages → Deploy from a branch → `gh-pages` / (root)**.
 - [x] Site live.
+
+### Repo protection
+- [ ] Add a GitHub ruleset on `main` so GitHub itself enforces the PR-only rule
+      (needs repo admin): **Settings → Rules → Rulesets → New branch ruleset**, target
+      `main`, turn on **Require a pull request before merging**, **Require status
+      checks to pass** (add `site`; it appears after the workflow has run on a PR) and
+      **Block force pushes**.
 
 ### Review
 - [ ] **Level badges** — first-pass levels set by an agent; confirm or change them in the topic files.
@@ -65,6 +75,8 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 |------|----------|-----|
 | 2026-11-18 | Six topics: MAP intro course; Learning R; Data presentation; Working with spatial data; Modelling species' distributions; Code management | Agreed with repo owner; avoids one long list |
 | 2026-11-18 | Topic order: Learning R, Data presentation, Working with spatial data, MAP intro course, Modelling species' distributions, Code management; no "Start here" badge | Repo owner, after launch |
+| 2026-11-18 | Red line: no edits, commits, merges or pushes on `main` by agents. All work goes on a branch, and reaches `main` only through a PR merged on GitHub | Repo owner. `main` deploys straight to the live site; PRs add a build check and human review; several operators and agents work here at once |
+| 2026-11-18 | Agents never create a branch on their own. On `main` (or for unrelated work on another branch) they ask the operator whether to create one, may suggest a name, and create it only after a yes | Repo owner: branch creation is the operator's decision |
 | 2026-11-18 | Whole site bilingual; English at `/`, French at `/fr/`; toggle on every page links to the same page in the other language | Repo owner |
 | 2026-11-18 | French content taken unchanged from the original `README_fr.md`; only new or changed text is translated, and marked for review | Repo owner |
 | 2026-11-18 | Each MAP tutorial listed once (MAP page) and linked from the spatial page with `see-also` | Removes duplicate entries |
@@ -79,6 +91,18 @@ each session. How the site works is in [AGENTS.md](AGENTS.md).
 
 ## Change log
 
+- **2026-11-18** (Claude Code agent) — Tightened the red line at the owner's
+  request: agents must ask before creating any branch, may suggest a name, and
+  create it only after the operator says yes. With no yes, they make no edits.
+  Updated AGENTS.md (red-line summary, session-start steps, refusal paragraph,
+  agent command-line steps) and CLAUDE.md. Made on `main` at the owner's request;
+  the change is not yet committed.
+- **2026-11-18** (Claude Code agent) — Added the "never work on `main`" red line:
+  a new section at the top of AGENTS.md (rule, what to do at session start,
+  refusing requests to work on `main`, reasons, branch how-to for agents and for
+  RStudio/usethis operators, server-side ruleset), a summary at the top of
+  CLAUDE.md, and a branch/PR note in README.md. Added the ruleset task above. Made
+  directly on `main` at the owner's request, because the rule did not exist yet.
 - **2026-11-18** (Claude Code agent) — Reordered topics (weights in both languages):
   Learning R 10, Data presentation 20, Working with spatial data 30, MAP intro course
   40, SDM 50, Code management 60. Removed `badge: start_here` from the MAP course.

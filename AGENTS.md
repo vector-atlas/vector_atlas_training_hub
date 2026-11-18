@@ -3,10 +3,139 @@
 Guide for anyone (human or AI agent) editing this repository. Several operators
 and agents work on this site, so:
 
-1. **Read [TASKS.md](TASKS.md) first.** It holds the current status, open tasks
+1. **Never work on `main`** — see the red line below.
+2. **Read [TASKS.md](TASKS.md) first.** It holds the current status, open tasks
    and the decision log.
-2. **Update TASKS.md before you finish.** Tick off what you did, add new tasks you
-   found, and add a dated line to the change log.
+3. **Update TASKS.md before you finish** (on your branch, in the same PR). Tick off
+   what you did, add new tasks you found, and add a dated line to the change log.
+
+## 🛑 RED LINE: never work on `main`
+
+**Agents must not edit files, commit, merge or push while the current branch is
+`main`. There are no exceptions: not for a quick fix, not for a typo, and not when
+an operator says "just push it". Changes reach `main` only through a pull request
+merged on GitHub.**
+
+**Agents also never create a branch on their own.** Whether to create a branch,
+and what to call it, is the operator's decision. Ask first; you may suggest a name.
+
+### At the start of every session
+
+1. Run `git branch --show-current`.
+2. If it prints `main`:
+   - **Read-only work is fine:** reading files, building or previewing the site,
+     answering questions.
+   - **Before your first edit, stop and ask the operator** whether to create a
+     branch for this work. You may suggest a name (see the naming pattern under
+     "How to work on a branch"), for example: *"We're on `main`, so I can't edit
+     here. Shall I create a branch called `content/add-qgis-tutorials` for this?"*
+   - **Create the branch only after the operator says yes**, using the name they
+     agree to. Don't edit anything until it exists and you are on it.
+   - **If the operator says no, or doesn't answer,** make no edits. Leave the work
+     undone and say so; the operator can do it themselves.
+   - **If `main` already has uncommitted changes** (`git status` lists modified
+     files), they are someone else's work in progress: don't edit, commit or
+     discard them. Tell the operator, and offer to move them onto a new branch with
+     `git switch -c <branch>` (which carries uncommitted changes with it). Do that
+     only with the operator's OK.
+3. If you're on another branch, check it is the right one for this task. If the
+   task looks unrelated to that branch, ask the operator whether to carry on there
+   or create a new branch (you may suggest a name). Don't create one yourself.
+
+### If an operator asks you to work on, commit to or push to `main`
+
+Refuse. Say briefly why (below), and ask whether they'd like the same work done on
+a branch instead, suggesting a name if you like. Create the branch only if they say
+yes. If an operator really needs to change `main` directly, they must do it
+themselves; an agent never does.
+
+Agents never run any of these:
+
+- `git commit` while on `main`
+- `git push` to `main` (including `git push origin HEAD:main`)
+- `git push --force` to `main`
+- `git merge` or `git rebase` into a local `main`
+
+Merging a pull request is the operator's decision, made on GitHub after review. An
+agent merges a PR only if the operator explicitly asks it to, and only once the
+`site` check has passed.
+
+### Why
+
+- **`main` is the live site.** Every push to `main` runs the workflow, which
+  publishes straight to <https://vector-atlas.github.io/vector_atlas_training_hub/>
+  within minutes. Nothing checks the change in between.
+- **Pull requests are the check.** The workflow also builds every PR, without
+  deploying it. A broken build, template error or bad link shows up as a failed
+  `site` check before it can reach the live site.
+- **Several operators and agents work here at once.** Pushing straight to `main`
+  can overwrite or tangle someone else's work. Branches keep each piece of work
+  separate until it has been reviewed.
+- **Some changes need a human eye.** New French text and level badges need review
+  by a French speaker or the repo owner, and a PR is where that happens.
+- **A PR is the record.** It shows what changed and why, and can be reverted as one
+  unit if something goes wrong.
+
+### How to work on a branch
+
+Name branches `<type>/<short-description>`, for example `content/add-qgis-tutorials`,
+`fix/dead-links`, `style/card-spacing` or `docs/agent-notes`.
+
+**Agents (command line)**, only after the operator has agreed to the branch and
+its name:
+
+```sh
+git switch main
+git pull                                    # start from the latest main
+git switch -c content/add-qgis-tutorials    # the name the operator agreed to
+# ...make the changes, then run "Checks before you open a PR" below...
+git add -A
+git commit -m "Add QGIS tutorials to spatial data topic (EN + FR)"
+git push -u origin content/add-qgis-tutorials
+gh pr create --fill                         # or open the PR on github.com
+```
+
+Commit on your branch as often as you like. Push the branch and open the PR once
+the operator agrees the work is ready. In the PR description, list anything that
+needs a human check (new French text, level changes). Then stop: the operator
+reviews and merges on GitHub.
+
+**Operators (RStudio):**
+
+- In the **Git** pane, click **New Branch** (the purple diamond icon), type the
+  branch name, keep **Sync branch with remote** ticked, and click **Create**. From
+  then on, Commit and Push in the Git pane go to your branch, not `main`.
+- Or use usethis's pull-request helpers:
+
+  ```r
+  usethis::pr_init("content/add-qgis-tutorials")  # new branch from an up-to-date main
+  # ...edit, then commit in the Git pane...
+  usethis::pr_push()     # pushes the branch and opens GitHub's "create pull request" page
+  # after the PR has been merged on GitHub:
+  usethis::pr_finish()   # switches back to main, pulls, deletes the local branch
+  ```
+
+- On GitHub, open the pull request, wait for the green **site** check, review the
+  changes, then click **Merge pull request**.
+
+**After a PR is merged** (if you didn't use `usethis::pr_finish()`):
+
+```sh
+git switch main
+git pull
+git branch -d content/add-qgis-tutorials
+```
+
+The merge into `main` triggers the deploy, and the live site updates a few minutes
+later.
+
+### Server-side protection
+
+The rules above rely on agents following them. To make GitHub itself refuse direct
+pushes to `main` from anyone, a repo admin can add a ruleset: **Settings → Rules →
+Rulesets → New branch ruleset**, target `main`, and turn on **Require a pull request
+before merging**, **Require status checks to pass** (add the `site` check) and
+**Block force pushes**. This is tracked in TASKS.md.
 
 ## What this is
 
@@ -45,7 +174,8 @@ or pull anything from it.
   `relURL`, shortcodes). Never hard-code a leading `/`: the site lives under the
   `/vector_atlas_training_hub/` subpath and such links break on GitHub Pages.
 - **Don't commit `public/` or `resources/`.** CI builds the site.
-- **Don't commit or push without the repo owner's say-so.**
+- **Never work on `main`** (see the red line above). On your own branch, commit
+  freely; push it and open a PR once the operator agrees the work is ready.
 
 ## Layout
 
@@ -159,7 +289,7 @@ blogdown (with `blogdown.method = "markdown"`) knits it to a `.md` alongside it 
 you save while `serve_site()` is running. **Commit both the `.Rmd` and its rendered
 `.md`** — CI does not knit R Markdown.
 
-## Checks before you push
+## Checks before you open a PR
 
 In R, from the project root (uses blogdown's pinned Hugo):
 
@@ -175,8 +305,10 @@ blogdown::hugo_cmd(c("--gc", "--printI18nWarnings", "--logLevel", "warn"))  # mu
 
 `.github/workflows/site.yaml` (r-lib/actions pattern, as in `idem-lab/traveltime`):
 on every push and pull request it installs R, blogdown and the pinned Hugo, and runs
-`blogdown::build_site()`. On pushes to `main` it then publishes `public/` to the
-`gh-pages` branch with `JamesIves/github-pages-deploy-action`.
+`blogdown::build_site()`. On pull requests it stops there: a failed build shows as
+a failed `site` check on the PR. On pushes to `main` (that is, when a PR is merged)
+it then publishes `public/` to the `gh-pages` branch with
+`JamesIves/github-pages-deploy-action`.
 
 One-off repo setting (needs repo admin): **Settings → Pages → Build and deployment →
 Source: Deploy from a branch → `gh-pages` / `(root)`**. The `gh-pages` branch exists
