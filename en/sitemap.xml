@@ -2,18 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://vector-atlas.github.io/vector_atlas_training_hub/topics/map-intro-course/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://vector-atlas.github.io/vector_atlas_training_hub/topics/map-intro-course/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://vector-atlas.github.io/vector_atlas_training_hub/fr/topics/map-intro-course/"
-                />
-  </url><url>
     <loc>https://vector-atlas.github.io/vector_atlas_training_hub/topics/learning-r/</loc>
     <xhtml:link
                 rel="alternate"
@@ -48,6 +36,18 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://vector-atlas.github.io/vector_atlas_training_hub/fr/topics/spatial-data/"
+                />
+  </url><url>
+    <loc>https://vector-atlas.github.io/vector_atlas_training_hub/topics/map-intro-course/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://vector-atlas.github.io/vector_atlas_training_hub/topics/map-intro-course/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://vector-atlas.github.io/vector_atlas_training_hub/fr/topics/map-intro-course/"
                 />
   </url><url>
     <loc>https://vector-atlas.github.io/vector_atlas_training_hub/topics/species-distribution-modelling/</loc>
