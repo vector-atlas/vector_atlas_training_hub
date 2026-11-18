@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Hugo / blogdown build output (built and deployed by GitHub Actions)
+public/
+resources/
+.hugo_build.lock
+*.knit.md
+*.utf8.md
+.DS_Store

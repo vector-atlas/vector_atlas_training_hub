@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+
+{{- /* Link every translation of this page so search engines pair them */}}
+{{ range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+
+{{- /* Favicon: the green mosquito square from the right-hand end of the logo */}}
+{{- with resources.Get "images/vector-atlas-logo.png" }}
+  {{- $icon := (.Process "crop 680x680 Right").Process "resize 64x64 png" }}
+<link rel="icon" type="image/png" href="{{ $icon.RelPermalink }}">
+{{- end }}
+
+{{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

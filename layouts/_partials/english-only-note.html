@@ -1,0 +1,7 @@
+{{- /*
+  "Ressource disponible en anglais uniquement" note for French pages, with a
+  mailto link whose subject names the resource. Context: dict "title" <title>.
+*/ -}}
+{{- $subject := printf "Ressource francophone : %s" (plainify .title) }}
+{{- $mailto := printf "mailto:%s?subject=%s" site.Params.contactEmail (replace (urlquery $subject) "+" "%20") }}
+<div class="callout">{{ i18n "english_only_note" (dict "mailto" $mailto) | markdownify }}</div>

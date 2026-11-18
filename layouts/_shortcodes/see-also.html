@@ -1,0 +1,29 @@
+{{- /*
+  A slim card pointing to a resource that lives on another topic page,
+  so it is listed once and linked from wherever else it is relevant.
+
+  {{< see-also page="/topics/map-intro-course" anchor="map-qgis" title="Spatial Data in QGIS (MAP)" level="beginner" >}}
+
+  Parameters
+    page     required  Path of the topic page (same path in both languages)
+    anchor   optional  id of the resource on that page
+    title    required  Text to show
+    level    optional  beginner | intermediate | advanced | all
+    en_only  optional  true on French pages to show the 🇬🇧 badge
+*/ -}}
+{{- $path := .Get "page" }}
+{{- $title := .Get "title" }}
+{{- if not $title }}{{ errorf "see-also shortcode is missing title= at %s" .Position }}{{ end }}
+{{- $target := .Page.GetPage $path }}
+{{- if not $target }}{{ errorf "see-also shortcode: page %q not found at %s" $path .Position }}{{ end }}
+{{- $enOnly := eq (printf "%v" (.Get "en_only")) "true" }}
+<a class="see-also" href="{{ $target.RelPermalink }}{{ with .Get "anchor" }}#{{ . }}{{ end }}">
+  <span class="see-also-main">
+    <span class="see-also-title">{{ $title | markdownify }}</span>
+    <span class="see-also-meta">{{ i18n "see_also_part_of" }} <em>{{ $target.Title }}</em> →</span>
+  </span>
+  <span class="badges">
+    {{- with .Get "level" }}<span class="badge level-{{ . }}">{{ i18n (printf "level_%s" .) }}</span>{{ end }}
+    {{- if $enOnly }}<span class="badge lang-en">{{ i18n "english_only_badge" }}</span>{{ end }}
+  </span>
+</a>

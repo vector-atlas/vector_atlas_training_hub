@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ site.Home.RelPermalink }}">
+      {{- with resources.Get "images/vector-atlas-logo.png" }}
+        {{- $logo := .Process "resize 480x png" }}
+        <img src="{{ $logo.RelPermalink }}" width="{{ div $logo.Width 2 }}" height="{{ div $logo.Height 2 }}" alt="Vector Atlas">
+      {{- end }}
+      <span class="brand-title">{{ site.Title }}</span>
+    </a>
+    {{ partial "lang-switch.html" . }}
+  </div>
+</header>

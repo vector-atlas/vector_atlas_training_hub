@@ -1,0 +1,31 @@
+{{- /*
+  A card linking to one topic page. Context: dict "page" <topic page> "n" <position>.
+  The resource count and level range are read from the topic's resource shortcodes.
+*/ -}}
+{{- $p := .page }}
+{{- $raw := $p.RawContent }}
+{{- $count := len (findRE `\{\{<\s*resource\s` $raw) }}
+{{- $order := slice "beginner" "intermediate" "advanced" }}
+{{- $found := slice }}
+{{- range findRESubmatch `\{\{<\s*resource\s[^>]*?level="(\w+)"` $raw }}
+  {{- $found = $found | append (index . 1) }}
+{{- end }}
+{{- $levels := slice }}
+{{- range $order }}{{ if in $found . }}{{ $levels = $levels | append . }}{{ end }}{{ end }}
+<a class="topic-card" href="{{ $p.RelPermalink }}">
+  <span class="topic-num">{{ printf "%02d" .n }}</span>
+  <h3 class="topic-title">{{ $p.Title }}</h3>
+  {{- with $p.Description }}
+  <p class="topic-summary">{{ . | markdownify }}</p>
+  {{- end }}
+  <p class="topic-meta">
+    <span>{{ i18n "resources" $count }}</span>
+    {{- with $levels }}
+    <span aria-hidden="true">·</span>
+    <span>{{ i18n (printf "level_%s" (index . 0)) }}{{ if gt (len .) 1 }} – {{ i18n (printf "level_%s" (index . (sub (len .) 1))) }}{{ end }}</span>
+    {{- end }}
+  </p>
+  {{- with $p.Params.badge }}
+  <span class="topic-flag">{{ i18n . }}</span>
+  {{- end }}
+</a>

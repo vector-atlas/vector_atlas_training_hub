@@ -1,0 +1,36 @@
+{{ define "main" }}
+<nav class="breadcrumb"><a href="{{ site.Home.RelPermalink }}">← {{ i18n "all_topics" }}</a></nav>
+
+<article class="topic">
+  <header class="topic-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lede">{{ . | markdownify }}</p>{{ end }}
+  </header>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+
+{{- /* Previous / next topic, in the same order as the home page */}}
+{{- if eq .Section "topics" }}
+  {{- $pages := (where site.RegularPages "Section" "topics").ByWeight }}
+  {{- $prev := false }}
+  {{- $next := false }}
+  {{- range $i, $p := $pages }}
+    {{- if eq $p $ }}
+      {{- if gt $i 0 }}{{ $prev = index $pages (sub $i 1) }}{{ end }}
+      {{- if lt $i (sub (len $pages) 1) }}{{ $next = index $pages (add $i 1) }}{{ end }}
+    {{- end }}
+  {{- end }}
+  {{- if or $prev $next }}
+<nav class="pager">
+  {{- with $prev }}
+  <a class="pager-link prev" href="{{ .RelPermalink }}"><span class="pager-label">← {{ i18n "previous_topic" }}</span><span class="pager-title">{{ .Title }}</span></a>
+  {{- else }}<span></span>{{ end }}
+  {{- with $next }}
+  <a class="pager-link next" href="{{ .RelPermalink }}"><span class="pager-label">{{ i18n "next_topic" }} →</span><span class="pager-title">{{ .Title }}</span></a>
+  {{- end }}
+</nav>
+  {{- end }}
+{{- end }}
+{{ end }}

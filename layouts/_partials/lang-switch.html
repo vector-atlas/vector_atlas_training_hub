@@ -1,0 +1,16 @@
+{{- /*
+  Language toggle. Links to the same page in the other language when a
+  translation exists (paired by file name, e.g. learning-r.md <-> learning-r.fr.md),
+  otherwise to the other language's home page.
+*/ -}}
+{{- $current := . }}
+{{- range site.Home.AllTranslations }}
+  {{- $lang := .Language.Lang }}
+  {{- if ne $lang site.Language.Lang }}
+    {{- $target := . }}
+    {{- range $current.Translations }}
+      {{- if eq .Language.Lang $lang }}{{ $target = . }}{{ end }}
+    {{- end }}
+<a class="lang-switch" href="{{ $target.RelPermalink }}" hreflang="{{ $lang }}" lang="{{ $lang }}">{{ i18n "switch_language" }}</a>
+  {{- end }}
+{{- end }}

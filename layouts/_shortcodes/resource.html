@@ -1,0 +1,59 @@
+{{- /*
+  One training resource, rendered as a card.
+
+  {{< resource title="..." url="https://..." authors="..." level="beginner" >}}
+  Markdown description (links, *italics*, `code` all fine).
+  {{< /resource >}}
+
+  Or, with no description:  {{< resource title="..." url="..." level="beginner" />}}
+
+  Parameters
+    title    required  Resource name (markdown allowed, e.g. `terra`)
+    url      required  Link to the resource
+    authors  optional  Author(s) or organisation
+    level    optional  beginner | intermediate | advanced | all
+    id       optional  Anchor id (default: from the title). Used by see-also links.
+    en_only  optional  true on French pages for English-only resources: shows the
+                       🇬🇧 badge and the "Ressource disponible en anglais uniquement" note
+    note     optional  false to show the 🇬🇧 badge without the note
+*/ -}}
+{{- $title := .Get "title" }}
+{{- $url := .Get "url" }}
+{{- if not $title }}{{ errorf "resource shortcode is missing title= at %s" .Position }}{{ end }}
+{{- if not $url }}{{ errorf "resource shortcode is missing url= at %s" .Position }}{{ end }}
+
+{{- $level := .Get "level" }}
+{{- if $level }}
+  {{- if not (in (slice "beginner" "intermediate" "advanced" "all") $level) }}
+    {{- errorf "resource shortcode: level=%q must be beginner, intermediate, advanced or all, at %s" $level .Position }}
+  {{- end }}
+{{- end }}
+
+{{- $enOnly := eq (printf "%v" (.Get "en_only")) "true" }}
+{{- $note := ne (printf "%v" (.Get "note")) "false" }}
+{{- $id := .Get "id" | default (anchorize (plainify $title)) }}
+
+{{- $u := urls.Parse $url }}
+{{- $display := printf "%s%s" (strings.TrimPrefix "www." $u.Host) (strings.TrimSuffix "/" $u.Path) }}
+
+<section class="resource" id="{{ $id }}">
+  <div class="resource-head">
+    <h3 class="resource-title"><a href="{{ $url }}">{{ $title | markdownify }}</a></h3>
+    <div class="badges">
+      {{- with $level }}<span class="badge level-{{ . }}">{{ i18n (printf "level_%s" .) }}</span>{{ end }}
+      {{- if $enOnly }}<span class="badge lang-en">{{ i18n "english_only_badge" }}</span>{{ end }}
+    </div>
+  </div>
+  {{- with .Get "authors" }}
+  <p class="resource-authors">{{ . | markdownify }}</p>
+  {{- end }}
+  <p class="resource-url"><a href="{{ $url }}" tabindex="-1" aria-hidden="true">{{ $display }}</a></p>
+  {{- if and $enOnly $note }}
+  {{ partial "english-only-note.html" (dict "title" $title) }}
+  {{- end }}
+  {{- with strings.TrimSpace .InnerDeindent }}
+  <div class="resource-body">
+    {{ $.Page.RenderString (dict "display" "block") . }}
+  </div>
+  {{- end }}
+</section>

@@ -1,0 +1,50 @@
+# Hugo configuration for the Vector Atlas Training Hub.
+# See AGENTS.md for how this site is organised and how to edit it.
+
+baseURL: https://vector-atlas.github.io/vector_atlas_training_hub/
+title: Vector Atlas Training Hub
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false   # English at /, French at /fr/
+
+enableRobotsTXT: true
+disableKinds: [taxonomy, term, rss]
+
+# Files blogdown leaves behind that Hugo should not publish
+ignoreFiles:
+  - \.Rmd$
+  - \.Rmarkdown$
+  - _cache$
+  - \.knit\.md$
+  - \.utf8\.md$
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true   # allow small bits of inline HTML in content, e.g. <sup>
+
+params:
+  contactEmail: vectoratlas@icipe.org
+  repoURL: https://github.com/vector-atlas/vector_atlas_training_hub
+  vectorAtlasURL: https://vectoratlas.icipe.org
+
+languages:
+  en:
+    label: English
+    locale: en
+    weight: 1
+    title: Vector Atlas Training Hub
+    params:
+      description: >-
+        A curated set of free online resources for learning data management,
+        visualisation, spatial analysis and modelling of mosquito disease vectors.
+  fr:
+    label: Français
+    locale: fr
+    weight: 2
+    title: Ressources de formation du Vector Atlas
+    params:
+      description: >-
+        Une sélection de ressources en ligne gratuites pour apprendre la gestion
+        des données, la visualisation, l'analyse spatiale et la modélisation des
+        moustiques vecteurs de maladies.

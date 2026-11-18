@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hugo-site",
+      "runtimeExecutable": "Rscript",
+      "runtimeArgs": [
+        "-e",
+        "blogdown::hugo_cmd(c('server', '--port', '4321', '--bind', '127.0.0.1', '--disableFastRender'))"
+      ],
+      "port": 4321
+    }
+  ]
+}

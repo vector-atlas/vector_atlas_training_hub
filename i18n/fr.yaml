@@ -1,0 +1,44 @@
+# Interface strings (French). Every key here must also exist in i18n/en.yaml.
+# Lines marked "# NEW" were written for this site (not taken from the original
+# README_fr.md) and have not yet been reviewed by a French speaker.
+# See TASKS.md.
+
+skip_to_content: Aller au contenu                       # NEW
+switch_language: English
+topics: Thèmes                                          # NEW
+all_topics: Tous les thèmes                             # NEW
+previous_topic: Thème précédent                         # NEW
+next_topic: Thème suivant                               # NEW
+start_here: Pour commencer                              # NEW
+
+resources:                                              # NEW
+  one: "{{ .Count }} ressource"
+  other: "{{ .Count }} ressources"
+
+level_beginner: Débutant                                # NEW
+level_intermediate: Intermédiaire                       # NEW
+level_advanced: Avancé                                  # NEW
+level_all: Tous niveaux                                 # NEW
+levels_note: Les niveaux indiqués donnent un repère approximatif et ne constituent pas des prérequis stricts.   # NEW
+
+english_only_badge: 🇬🇧 En anglais                       # NEW
+# From README_fr.md (email updated):
+english_only_note: >-
+  🇬🇧 **Ressource disponible en anglais uniquement** — nous n'avons pas identifié
+  d'équivalent francophone. Vous en connaissez un que nous devrions référencer ?
+  [Écrivez-nous]({{ .mailto }}).
+
+see_also_part_of: Fait partie de                        # NEW
+
+questions: Des questions ?
+# From README_fr.md ("Cette page est maintenue" -> "Ce site est maintenu"):
+maintained_by: Ce site est maintenu par Gerry Ryan pour le compte du **Vector Atlas**.
+# From README_fr.md ("la page" -> "le site", link updated):
+report_issue: Si vous constatez un problème sur le site ou un lien mort, merci de [signaler un problème (*issue*)]({{ .repo }}/issues).
+# From README_fr.md (email updated):
+contact: Vous connaissez une ressource francophone qui pourrait remplacer l'une des ressources signalées 🇬🇧, ou vous avez d'autres questions ? Contactez-nous à l'adresse [{{ .email }}](mailto:{{ .email }}).
+# From README_fr.md:
+disclaimer: Le **Vector Atlas** n'exerce aucun contrôle sur les ressources citées et décline toute responsabilité quant à leur contenu ; cette liste est proposée uniquement à titre de service à nos collaborateurs et collaboratrices.
+
+page_not_found: Page introuvable                        # NEW
+page_not_found_text: Cette page n'existe pas. Consultez plutôt la liste des thèmes.   # NEW

@@ -1,0 +1,11 @@
+{{ define "main" }}
+<nav class="breadcrumb"><a href="{{ site.Home.RelPermalink }}">← {{ site.Title }}</a></nav>
+<h1>{{ .Title }}</h1>
+{{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+<div class="topic-grid">
+  {{- range $i, $p := .RegularPages.ByWeight }}
+    {{ partial "topic-card.html" (dict "page" $p "n" (add $i 1)) }}
+  {{- end }}
+</div>
+<p class="note">{{ i18n "levels_note" }}</p>
+{{ end }}

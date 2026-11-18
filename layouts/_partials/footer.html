@@ -1,0 +1,18 @@
+{{- $repo := site.Params.repoURL }}
+{{- $email := site.Params.contactEmail }}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-text">
+      <h2 class="footer-heading" id="questions">{{ i18n "questions" }}</h2>
+      <p>{{ i18n "maintained_by" | markdownify }}</p>
+      <p>{{ i18n "report_issue" (dict "repo" $repo) | markdownify }}</p>
+      <p>{{ i18n "contact" (dict "email" $email) | markdownify }}</p>
+    </div>
+    <a class="footer-logo" href="{{ site.Params.vectorAtlasURL }}">
+      {{- with resources.Get "images/vector-atlas-logo.png" }}
+        {{- $logo := .Process "resize 400x png" }}
+        <img src="{{ $logo.RelPermalink }}" width="{{ div $logo.Width 2 }}" height="{{ div $logo.Height 2 }}" alt="Vector Atlas">
+      {{- end }}
+    </a>
+  </div>
+</footer>

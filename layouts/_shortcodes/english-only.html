@@ -1,0 +1,9 @@
+{{- /*
+  Stand-alone "Ressource disponible en anglais uniquement" note (French pages),
+  e.g. for a whole course rather than one resource card.
+
+  {{< english-only title="Name of the English resource" >}}
+*/ -}}
+{{- $title := .Get "title" }}
+{{- if not $title }}{{ errorf "english-only shortcode is missing title= at %s" .Position }}{{ end }}
+{{ partial "english-only-note.html" (dict "title" $title) }}

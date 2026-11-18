@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>{{ .Title }}</h1>
+  <div class="prose hero-text">
+    {{ .Content }}
+  </div>
+</section>
+
+<section class="topics" aria-labelledby="topics-heading">
+  <h2 id="topics-heading" class="section-heading">{{ i18n "topics" }}</h2>
+  <div class="topic-grid">
+    {{- range $i, $p := (where site.RegularPages "Section" "topics").ByWeight }}
+      {{ partial "topic-card.html" (dict "page" $p "n" (add $i 1)) }}
+    {{- end }}
+  </div>
+  <p class="note">{{ i18n "levels_note" }}</p>
+</section>
+
+<section class="disclaimer">
+  <p>{{ i18n "disclaimer" | markdownify }}</p>
+</section>
+{{ end }}
